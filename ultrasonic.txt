@@ -1,0 +1,36 @@
+#define TRIG_PIN 13
+#define ECHO_PIN 12
+#define LED_PIN 2
+
+void setup() {
+  pinMode(TRIG_PIN, OUTPUT); // Sets the trigPin as an Output
+  pinMode(ECHO_PIN, INPUT);  // Sets the echoPin as an Input
+  pinMode(LED_PIN, OUTPUT);  // Set LED pin as an output
+  Serial.begin(9600);        // Starts the serial communication
+}
+
+void loop() {
+  long duration, distance;
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin on HIGH state for 10 micro seconds
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(ECHO_PIN, HIGH);
+  // Calculating the distance
+  distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
+  // Checks if the distance is within range
+  if (distance < 10) {
+    // Turn LED ON
+    digitalWrite(LED_PIN, HIGH);
+  } else {
+    // Turn LED OFF
+    digitalWrite(LED_PIN, LOW);
+  }
+  // Prints the distance on the Serial Monitor
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  delay(100);
+}
