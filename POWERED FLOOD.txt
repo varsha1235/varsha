@@ -1,0 +1,25 @@
+const int waterSensorPin = 34; // Analog pin connected to the water level sensor
+const int alertPin = 2; // Digital pin connected to the alert mechanism (e.g., LED)
+
+// Define water level threshold
+const int waterLevelThreshold = 500; // Adjust this value according to your simulation
+
+void setup() {
+  pinMode(alertPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int waterLevel = analogRead(waterSensorPin);
+  Serial.print("Water Level: ");
+  Serial.println(waterLevel);
+
+  if (waterLevel > waterLevelThreshold) {
+    digitalWrite(alertPin, HIGH);
+    Serial.println("Flood Detected!");
+  } else {
+    digitalWrite(alertPin, LOW);
+  }
+
+  delay(1000); // Adjust delay time as needed
+}
