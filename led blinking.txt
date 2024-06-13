@@ -1,0 +1,14 @@
+#include <Arduino.h>
+
+#define LED_PIN PC13 // On many STM32 boards, the built-in LED is on pin PC13
+
+void setup() {
+  pinMode(LED_PIN, OUTPUT); // Initialize the LED pin as an output
+}
+
+void loop() {
+  digitalWrite(LED_PIN, HIGH); // Turn the LED on
+  delay(1000);                 // Wait for one second
+  digitalWrite(LED_PIN, LOW);  // Turn the LED off
+  delay(1000);                 // Wait for one second
+}
