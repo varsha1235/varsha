@@ -1,0 +1,15 @@
+from machine import Pin
+import utime
+
+# Set up LED pin (e.g., GPIO0 on Raspberry Pi Pico)
+led = Pin(0, Pin.OUT)
+
+# Blinking loop
+while True:
+    # Turn LED on
+    led.on()
+    utime.sleep_ms(1000)  # Wait for 1 second
+
+    # Turn LED off
+    led.off()
+    utime.sleep_ms(1000)  # Wait for 1 second
